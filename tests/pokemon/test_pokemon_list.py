@@ -1,7 +1,7 @@
 from assertions.pokemon_list import (
     verify_pokemon_list_response,
 )
-from constants import DefaultValues
+from constants import DefaultValues, Endpoints
 from tests.base_test import BaseTest
 
 
@@ -13,7 +13,7 @@ class TestPokemonList(BaseTest):
             limit=DefaultValues.DEFAULT_POKEMON_LIMIT_PER_PAGE, order_by="id"
         )
         expected_pagination_links = {
-            "next": "/pokemon?offset=20&limit=20",
+            "next": f"{Endpoints.POKEMON}?offset=20&limit=20",
             "previous": None,
         }
         verify_pokemon_list_response(
